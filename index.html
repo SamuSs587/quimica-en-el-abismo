@@ -1,0 +1,82 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>🔬 Química en el Abismo 🌌</title>
+  <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca&family=Unica+One&display=swap" rel="stylesheet">
+  <style>
+    body { margin: 0; font-family: 'Lexend Deca', sans-serif; background: #0a0f1a; color: white; padding: 2rem; }
+    h1, h2 { color: #f3c677; font-family: 'Unica One', cursive; }
+    .section { margin-bottom: 2.5rem; }
+    .analogy { background: #333; padding: 1rem; border-left: 5px solid #f3c677; margin-top: 1rem; }
+    .card-container { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .card { flex: 1 1 30%; background: #1e2a42; padding: 1rem; border-radius: 8px; text-align: center; }
+    .card img { max-width: 100%; border-radius: 5px; }
+    button { background: #f3c677; color: black; padding: 0.5rem; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; margin: 0.3rem 0; }
+    footer { margin-top: 3rem; padding-top: 1rem; border-top: 1px solid #444; font-size: 0.9rem; text-align: center; color: #aaa; }
+  </style>
+</head>
+<body>
+
+<h1>🔬 Química en el Abismo 🌌</h1>
+
+<div class="section">
+  <h2>⚛️ Modelo Atómico de Bohr</h2>
+  <p>Bohr propuso que los electrones giran en órbitas como capas del Abismo.</p>
+  <div class="analogy">🌀 Analogía: Como los niveles del Abismo, los electrones están organizados en capas.</div>
+</div>
+
+<div class="section">
+  <h2>🧪 Electrones de Valencia</h2>
+  <p>Los electrones en la última capa determinan cómo se enlazan los átomos.</p>
+  <div class="analogy">🔗 Analogía: Como los delvers en el borde, ¡listos para enlazarse!</div>
+</div>
+
+<div class="section">
+  <h2>🧬 Tipos de Enlace</h2>
+  <ul>
+    <li><strong>Enlace Iónico:</strong> un átomo cede y otro gana electrones ⚡</li>
+    <li><strong>Enlace Covalente:</strong> comparten electrones 🤝</li>
+    <li><strong>Enlace Metálico:</strong> electrones libres 🌐</li>
+  </ul>
+</div>
+
+<div class="section">
+  <h2>🧷 Teoría de Lewis</h2>
+  <p>Representa electrones de valencia como puntos alrededor del símbolo químico.</p>
+  <div class="analogy">📜 Analogía: Como un plano de conexiones del Abismo.</div>
+</div>
+
+<div class="section">
+  <h2>🧠 Quiz Interactivo</h2>
+  <p>¿Qué tipo de enlace implica compartir electrones?</p>
+  <button onclick="check(true)">A) Covalente</button>
+  <button onclick="check(false)">B) Iónico</button>
+  <button onclick="check(false)">C) Metálico</button>
+  <p id="resultado"></p>
+</div>
+
+<div class="section">
+  <h2>👥 Personajes del Abismo</h2>
+  <div class="card-container">
+    <div class="card"><img src="https://i.imgur.com/nanachi.jpg" alt="Nanachi" /><h3>Nanachi</h3><p>Sabiduría como un enlace metálico estable.</p></div>
+    <div class="card"><img src="https://i.imgur.com/riko.jpg" alt="Riko" /><h3>Riko</h3><p>Exploradora buscando enlazarse 🧪</p></div>
+    <div class="card"><img src="https://i.imgur.com/reg.jpg" alt="Reg" /><h3>Reg</h3><p>Ion positivo: fuerza y carga en el Abismo ⚡</p></div>
+  </div>
+</div>
+
+<footer>
+  Hecho con ❤️ por un silbato blanco químico · Inspirado en Made in Abyss · 2025
+</footer>
+
+<script>
+function check(correct) {
+  const res = document.getElementById("resultado");
+  res.textContent = correct ? "✅ ¡Correcto! Es el enlace covalente." : "❌ Intenta de nuevo.";
+}
+</script>
+
+</body>
+</html>
