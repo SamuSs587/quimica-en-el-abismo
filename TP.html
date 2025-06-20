@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tabla Periódica en el Abismo</title>
+  <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca&family=Unica+One&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      background: #0a0f1a;
+      color: white;
+      font-family: 'Lexend Deca', sans-serif;
+      padding: 2rem;
+    }
+    h1 {
+      font-family: 'Unica One', cursive;
+      color: #f3c677;
+      margin-bottom: 1rem;
+    }
+    .tabla {
+      display: grid;
+      grid-template-columns: repeat(18, 50px);
+      gap: 5px;
+      justify-content: start;
+    }
+    .elemento {
+      background: #1e2a42;
+      border-radius: 6px;
+      text-align: center;
+      padding: 5px 0;
+      cursor: pointer;
+      user-select: none;
+      transition: background 0.3s;
+    }
+    .elemento:hover {
+      background: #f3c677;
+      color: black;
+    }
+    .simbolo {
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+    .numero {
+      font-size: 0.7rem;
+      opacity: 0.7;
+    }
+    .info {
+      margin-top: 1.5rem;
+      background: #222f54;
+      padding: 1rem;
+      border-radius: 8px;
+      max-width: 400px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🔬 Tabla Periódica en el Abismo 🌌</h1>
+  <div class="tabla" id="tabla">
+    <!-- Elementos van aquí -->
+  </div>
+
+  <div class="info" id="info">
+    <p>Haz clic en un elemento para ver su información.</p>
+  </div>
+
+  <script>
+    const elementos = [
+      {numero: 1, simbolo: 'H', nombre: 'Hidrógeno', config: '1s¹', enlace: 'Covalente', analogia: 'El primer paso en el Abismo, simple pero vital.'},
+      {numero: 2, simbolo: 'He', nombre: 'Helio', config: '1s²', enlace: 'Ninguno (gas noble)', analogia: 'Como el borde seguro del Abismo, estable y reservado.'},
+      {numero: 3, simbolo: 'Li', nombre: 'Litio', config: '[He] 2s¹', enlace: 'Iónico', analogia: 'Un explorador que cede un tesoro (electrón) para seguir adelante.'},
+      {numero: 4, simbolo: 'Be', nombre: 'Berilio', config: '[He] 2s²', enlace: 'Iónico', analogia: 'Más fuerte y decidido, pero sigue compartiendo cargas.'},
+      {numero: 5, simbolo: 'B', nombre: 'Boro', config: '[He] 2s² 2p¹', enlace: 'Covalente', analogia: 'Como un aliado en el Abismo que construye puentes.'},
+      {numero: 6, simbolo: 'C', nombre: 'Carbono', config: '[He] 2s² 2p²', enlace: 'Covalente', analogia: 'La base de la vida, como la conexión entre los aventureros.'},
+      {numero: 7, simbolo: 'N', nombre: 'Nitrógeno', config: '[He] 2s² 2p³', enlace: 'Covalente', analogia: 'El aire que respiramos, vital en cada capa.'},
+      {numero: 8, simbolo: 'O', nombre: 'Oxígeno', config: '[He] 2s² 2p⁴', enlace: 'Covalente', analogia: 'Fuerza para seguir, como un poder que anima a los delvers.'},
+      {numero: 9, simbolo: 'F', nombre: 'Flúor', config: '[He] 2s² 2p⁵', enlace: 'Iónico y covalente', analogia: 'El peligro que acecha, siempre buscando un electrón.'},
+      {numero: 10, simbolo: 'Ne', nombre: 'Neón', config: '[He] 2s² 2p⁶', enlace: 'Ninguno (gas noble)', analogia: 'Luminoso y estable, como la luz que guía en el Abismo.'},
+      {numero: 11, simbolo: 'Na', nombre: 'Sodio', config: '[Ne] 3s¹', enlace: 'Iónico', analogia: 'Un delver que siempre entrega su carga para avanzar.'},
+      {numero: 12, simbolo: 'Mg', nombre: 'Magnesio', config: '[Ne] 3s²', enlace: 'Iónico', analogia: 'Un guerrero con cargas fuertes para proteger.'},
+      {numero: 13, simbolo: 'Al', nombre: 'Aluminio', config: '[Ne] 3s² 3p¹', enlace: 'Iónico y covalente', analogia: 'Versátil, puede adaptarse a varias conexiones.'},
+      {numero: 14, simbolo: 'Si', nombre: 'Silicio', config: '[Ne] 3s² 3p²', enlace: 'Covalente', analogia: 'La base de muchas estructuras, como el suelo del Abismo.'},
+      {numero: 15, simbolo: 'P', nombre: 'Fósforo', config: '[Ne] 3s² 3p³', enlace: 'Covalente', analogia: 'El fuego interno que mantiene la vida en movimiento.'},
+      {numero: 16, simbolo: 'S', nombre: 'Azufre', config: '[Ne] 3s² 3p⁴', enlace: 'Covalente', analogia: 'El aroma del Abismo, misterioso y esencial.'},
+      {numero: 17, simbolo: 'Cl', nombre: 'Cloro', config: '[Ne] 3s² 3p⁵', enlace: 'Iónico y covalente', analogia: 'Un guardián que siempre busca balancear cargas.'},
+      {numero: 18, simbolo: 'Ar', nombre: 'Argón', config: '[Ne] 3s² 3p⁶', enlace: 'Ninguno (gas noble)', analogia: 'Silencioso y estable, siempre presente en el Abismo.'},
+      {numero: 19, simbolo: 'K', nombre: 'Potasio', config: '[Ar] 4s¹', enlace: 'Iónico', analogia: 'Como un salto valiente hacia lo desconocido.'},
+      {numero: 20, simbolo: 'Ca', nombre: 'Calcio', config: '[Ar] 4s²', enlace: 'Iónico', analogia: 'La estructura sólida que sostiene el Abismo.'},
+    ];
+
+    const tabla = document.getElementById('tabla');
+    const info = document.getElementById('info');
+
+    function mostrarInfo(elemento) {
+      info.innerHTML = `
+        <h2>${elemento.nombre} (${elemento.simbolo})</h2>
+        <p><strong>Número atómico:</strong> ${elemento.numero}</p>
+        <p><strong>Configuración electrónica:</strong> ${elemento.config}</p>
+        <p><strong>Tipo de enlace favorito:</strong> ${elemento.enlace}</p>
+        <p><em>🌌 Analogía Made in Abyss:</em> ${elemento.analogia}</p>
+      `;
+    }
+
+    elementos.forEach(el => {
+      const div = document.createElement('div');
+      div.classList.add('elemento');
+      div.style.gridColumnStart = el.numero === 1 ? '1' : '';
+      div.textContent = `${el.simbolo}\n${el.numero}`;
+      div.title = el.nombre;
+      div.innerHTML = `<div class="simbolo">${el.simbolo}</div><div class="numero">${el.numero}</div>`;
+      div.addEventListener('click', () => mostrarInfo(el));
+      tabla.appendChild(div);
+    });
+  </script>
+
+</body>
+</html>
